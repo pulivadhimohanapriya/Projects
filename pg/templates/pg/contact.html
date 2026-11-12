@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sudarshan PG - Contact</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #5a3825;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        nav {
+            background-color: #3e2618;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 45px auto;
+        }
+
+        .title {
+            text-align: center;
+            color: #5a3825;
+            margin-bottom: 30px;
+        }
+
+        .contact-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-info,
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-info h2,
+        .contact-form h2 {
+            color: #5a3825;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+        }
+
+        .contact-item strong {
+            color: #5a3825;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 18px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 140px;
+            resize: vertical;
+        }
+
+        .button {
+            background-color: #5a3825;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #3e2618;
+        }
+
+        .message {
+            background-color: #dff0d8;
+            color: #3c763d;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 6px 8px;
+            }
+        }
+
+        footer {
+            background-color: #3e2618;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Sudarshan PG</h1>
+    <p>We Are Here to Help You</p>
+</header>
+
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'about' %}">About</a>
+    <a href="{% url 'rooms' %}">Rooms</a>
+    <a href="{% url 'facilities' %}">Facilities</a>
+    <a href="{% url 'gallery' %}">Gallery</a>
+    <a href="{% url 'contact' %}">Contact</a>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</nav>
+
+<div class="container">
+
+    <h1 class="title">Contact Us</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="contact-box">
+
+        <div class="contact-info">
+
+            <h2>Get In Touch</h2>
+
+            <p>
+                Have questions about our rooms, rent,
+                facilities or booking? Feel free to contact us.
+            </p>
+
+            <div class="contact-item">
+                <strong>📍 Address</strong>
+                <p>
+                    Sudarshan PG<br>
+                    Tirupati, Andhra Pradesh
+                </p>
+            </div>
+
+            <div class="contact-item">
+                <strong>📞 Phone</strong>
+                <p>
+                    +91 XXXXX XXXXX
+                </p>
+            </div>
+
+            <div class="contact-item">
+                <strong>✉ Email</strong>
+                <p>
+                    sudarshanpg@example.com
+                </p>
+            </div>
+
+            <div class="contact-item">
+                <strong>🕒 Working Hours</strong>
+                <p>
+                    Monday - Saturday<br>
+                    9:00 AM - 6:00 PM
+                </p>
+            </div>
+
+        </div>
+
+        <div class="contact-form">
+
+            <h2>Send Us a Message</h2>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label for="subject">Subject</label>
+                <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="Enter subject"
+                    required
+                >
+
+                <label for="message">Message</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your message here..."
+                    required
+                ></textarea>
+
+                <button type="submit" class="button">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Sudarshan PG. All Rights Reserved.
+</footer>
+
+</body>
+<div style="width: 90%; max-width: 1000px; margin: 40px auto;">
+    
+    <h2 style="text-align: center; color: #5a3825;">
+        Find Us on Google Maps
+    </h2>
+
+    <p style="text-align: center;">
+        Sudharshan Reddy PG, BTM Layout 2nd Stage, Bengaluru
+    </p>
+
+    <div style="text-align: center;">
+        <a href="https://maps.app.goo.gl/gCp17Kfz31hwdxeq5?g_st=ac"
+           target="_blank"
+           style="
+               display: inline-block;
+               background: #5a3825;
+               color: white;
+               padding: 12px 25px;
+               text-decoration: none;
+               border-radius: 5px;
+               margin-bottom: 20px;
+           ">
+            📍 Open Location in Google Maps
+        </a>
+    </div>
+
+    <iframe
+        src="https://www.google.com/maps?q=BTM+Layout+2nd+Stage,+Bengaluru,+Karnataka&output=embed"
+        width="100%"
+        height="400"
+        style="border:0; border-radius:10px;"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+
+</div>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sudarshan PG - About</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #5a3825;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        nav {
+            background-color: #3e2618;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 45px auto;
+        }
+
+        .title {
+            text-align: center;
+            color: #5a3825;
+            margin-bottom: 30px;
+        }
+
+        .about-card {
+            background-color: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+            line-height: 1.8;
+        }
+
+        .about-card h2 {
+            color: #5a3825;
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            background-color: #ead8c8;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature h3 {
+            color: #5a3825;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #3e2618;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Sudarshan PG</h1>
+    <p>About Our PG Accommodation</p>
+</header>
+
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'about' %}">About</a>
+    <a href="{% url 'rooms' %}">Rooms</a>
+    <a href="{% url 'facilities' %}">Facilities</a>
+    <a href="{% url 'gallery' %}">Gallery</a>
+    <a href="{% url 'contact' %}">Contact</a>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</nav>
+
+<div class="container">
+
+    <h1 class="title">About Sudarshan PG</h1>
+
+    <div class="about-card">
+
+        <h2>Welcome to Sudarshan PG</h2>
+
+        <p>
+            Sudarshan PG provides comfortable and affordable
+            accommodation for students and working professionals.
+            Our goal is to provide a convenient and pleasant
+            living environment for our residents.
+        </p>
+
+        <p>
+            Users can explore available rooms, check room types,
+            view rent details, explore facilities and view PG
+            photographs through the website.
+        </p>
+
+        <p>
+            The website also allows registered users to submit
+            booking requests and track their booking status
+            through their personal dashboard.
+        </p>
+
+        <h2>What We Provide</h2>
+
+        <div class="features">
+
+            <div class="feature">
+                <h3>Comfortable Rooms</h3>
+                <p>
+                    Clean and comfortable rooms with
+                    different sharing options.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Affordable Rent</h3>
+                <p>
+                    Reasonable accommodation options
+                    for residents.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Useful Facilities</h3>
+                <p>
+                    Essential facilities for a
+                    convenient stay.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Easy Booking</h3>
+                <p>
+                    Submit booking requests online
+                    and track their status.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Sudarshan PG. All Rights Reserved.
+</footer>
+
+</body>
+</html>

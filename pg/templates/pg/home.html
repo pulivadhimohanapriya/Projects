@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sudarshan PG - Home</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #5a3825;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        nav {
+            background-color: #3e2618;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            min-height: 430px;
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.55),
+                rgba(0, 0, 0, 0.55)
+            ),
+            url("https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+            padding: 30px;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #5a3825;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background-color: #3e2618;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #5a3825;
+            margin-bottom: 35px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(230px, 1fr)
+            );
+
+            gap: 25px;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #5a3825;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .about-section {
+            background-color: #ead8c8;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            color: #5a3825;
+            margin-bottom: 15px;
+        }
+
+        .about-section p {
+            max-width: 850px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        .links-section {
+            margin-top: 50px;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(200px, 1fr)
+            );
+
+            gap: 20px;
+        }
+
+        .quick-link {
+            background-color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
+        }
+
+        .quick-link h3 {
+            color: #5a3825;
+            margin-bottom: 12px;
+        }
+
+        .quick-link a {
+            color: #5a3825;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .quick-link a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #3e2618;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            .hero h2 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 6px 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>Sudarshan PG</h1>
+
+    <p>
+        Comfortable and Affordable PG Accommodation
+    </p>
+
+</header>
+
+
+<nav>
+
+    <a href="{% url 'home' %}">
+        Home
+    </a>
+
+    <a href="{% url 'about' %}">
+        About
+    </a>
+
+    <a href="{% url 'rooms' %}">
+        Rooms
+    </a>
+
+    <a href="{% url 'facilities' %}">
+        Facilities
+    </a>
+
+    <a href="{% url 'gallery' %}">
+        Gallery
+    </a>
+
+    <a href="{% url 'contact' %}">
+        Contact
+    </a>
+
+
+    {% if user.is_authenticated %}
+
+        <a href="{% url 'dashboard' %}">
+            Dashboard
+        </a>
+
+        <a href="{% url 'logout' %}">
+            Logout
+        </a>
+
+    {% else %}
+
+        <a href="{% url 'login' %}">
+            Login
+        </a>
+
+        <a href="{% url 'register' %}">
+            Register
+        </a>
+
+    {% endif %}
+
+</nav>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h2>
+            Welcome to Sudarshan PG
+        </h2>
+
+        <p>
+            Find a comfortable, affordable and convenient
+            place to stay with essential facilities and
+            easy online booking.
+        </p>
+
+
+        <a
+            href="{% url 'rooms' %}"
+            class="button"
+        >
+            View Available Rooms
+        </a>
+
+
+        {% if user.is_authenticated %}
+
+            <a
+                href="{% url 'dashboard' %}"
+                class="button"
+            >
+                My Dashboard
+            </a>
+
+        {% else %}
+
+            <a
+                href="{% url 'register' %}"
+                class="button"
+            >
+                Register Now
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<div class="container">
+
+    <h2 class="section-title">
+        Why Choose Sudarshan PG?
+    </h2>
+
+
+    <div class="features">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🏠
+            </div>
+
+            <h3>
+                Comfortable Rooms
+            </h3>
+
+            <p>
+                Clean and comfortable rooms
+                with different sharing options.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                💰
+            </div>
+
+            <h3>
+                Affordable Rent
+            </h3>
+
+            <p>
+                Reasonable accommodation
+                options for students and
+                working professionals.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📶
+            </div>
+
+            <h3>
+                Useful Facilities
+            </h3>
+
+            <p>
+                Essential facilities are
+                available for a convenient stay.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📋
+            </div>
+
+            <h3>
+                Easy Booking
+            </h3>
+
+            <p>
+                Submit booking requests online
+                and track their status easily.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="about-section">
+
+        <h2>
+            About Sudarshan PG
+        </h2>
+
+        <p>
+            Sudarshan PG provides comfortable and
+            affordable accommodation for students
+            and working professionals. Our website
+            allows users to explore rooms, check rent,
+            view facilities, submit booking requests
+            and track booking status through a
+            personal dashboard.
+        </p>
+
+
+        <a
+            href="{% url 'about' %}"
+            class="button"
+        >
+            Learn More
+        </a>
+
+    </div>
+
+
+    <div class="links-section">
+
+        <h2 class="section-title">
+            Explore Our PG
+        </h2>
+
+
+        <div class="quick-links">
+
+            <div class="quick-link">
+
+                <h3>
+                    🛏️ Rooms
+                </h3>
+
+                <p>
+                    <a href="{% url 'rooms' %}">
+                        View Available Rooms
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div class="quick-link">
+
+                <h3>
+                    📶 Facilities
+                </h3>
+
+                <p>
+                    <a href="{% url 'facilities' %}">
+                        View Facilities
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div class="quick-link">
+
+                <h3>
+                    📷 Gallery
+                </h3>
+
+                <p>
+                    <a href="{% url 'gallery' %}">
+                        View PG Photos
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div class="quick-link">
+
+                <h3>
+                    📞 Contact
+                </h3>
+
+                <p>
+                    <a href="{% url 'contact' %}">
+                        Contact Us
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    © 2026 Sudarshan PG.
+    All Rights Reserved.
+
+</footer>
+
+</body>
+</html>
